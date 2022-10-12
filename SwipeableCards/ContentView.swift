@@ -6,85 +6,69 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+    @State
+    private var users: [User] = [User(id: 0,
+                                      firstName: "Sandra",
+                                      lastName: "Souza",
+                                      start: .red,
+                                      end: .green),
+                                 User(id: 1,
+                                      firstName: "John",
+                                      lastName: "Carmo",
+                                      start: .green,
+                                      end: .orange),
+                                 User(id: 2,
+                                      firstName: "Luan",
+                                      lastName: "Carmo",
+                                      start: .blue,
+                                      end: .green),
+                                 User(id: 3,
+                                      firstName: "Luana",
+                                      lastName: "Cas",
+                                      start: .orange,
+                                      end: .purple),
+    ]
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+        GeometryReader { geometry in
+            ZStack {
+                ForEach(users) { user in
+                    if user.id > users.maxId - 4 {
+                        CardView(user: user, onRemove: { removedUser in
+                            users.removeAll {
+                                $0.id == removedUser.id
+                            }
+                        })
+                        .animation(.spring(), value: users)
+                        .frame(width: users
+                            .cardWidth(in: geometry, userId: user.id),
+                               height: 400)
+                        .offset(x: 0, y: users.cardOffset(userId: user.id))
                     }
                 }
             }
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
+        }.padding()
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
+extension Array where Element == User {
+    var maxId: Int {
+        map { $0.id }.max() ?? 0
+    }
+
+    func cardOffset(userId: Int) -> Double {
+        Double(count - 1 - userId) * 8.0
+    }
+
+    func cardWidth(in geometry: GeometryProxy, userId: Int) -> Double {
+        geometry.size.width - cardOffset(userId: userId)
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
     }
 }

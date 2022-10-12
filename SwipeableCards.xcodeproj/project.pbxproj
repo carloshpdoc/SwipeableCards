@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		9BB538F828F645CF007035DB /* SwipeableCardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB538F728F645CF007035DB /* SwipeableCardsApp.swift */; };
-		9BB538FA28F645CF007035DB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB538F928F645CF007035DB /* Persistence.swift */; };
 		9BB538FD28F645CF007035DB /* SwipeableCards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BB538FB28F645CF007035DB /* SwipeableCards.xcdatamodeld */; };
-		9BB538FF28F645CF007035DB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB538FE28F645CF007035DB /* ContentView.swift */; };
 		9BB5390128F645D3007035DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5390028F645D3007035DB /* Assets.xcassets */; };
 		9BB5390528F645D3007035DB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB5390428F645D3007035DB /* Preview Assets.xcassets */; };
+		9BB5390C28F64643007035DB /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5390B28F64643007035DB /* CardView.swift */; };
+		9BB5390E28F646AA007035DB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5390D28F646AA007035DB /* User.swift */; };
+		9BB5391028F6540D007035DB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB5390F28F6540D007035DB /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9BB538F428F645CF007035DB /* SwipeableCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeableCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB538F728F645CF007035DB /* SwipeableCardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableCardsApp.swift; sourceTree = "<group>"; };
-		9BB538F928F645CF007035DB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		9BB538FC28F645CF007035DB /* SwipeableCards.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwipeableCards.xcdatamodel; sourceTree = "<group>"; };
-		9BB538FE28F645CF007035DB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9BB5390028F645D3007035DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BB5390228F645D3007035DB /* SwipeableCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwipeableCards.entitlements; sourceTree = "<group>"; };
 		9BB5390428F645D3007035DB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9BB5390B28F64643007035DB /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		9BB5390D28F646AA007035DB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9BB5390F28F6540D007035DB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +59,13 @@
 			isa = PBXGroup;
 			children = (
 				9BB538F728F645CF007035DB /* SwipeableCardsApp.swift */,
-				9BB538F928F645CF007035DB /* Persistence.swift */,
-				9BB538FE28F645CF007035DB /* ContentView.swift */,
 				9BB5390028F645D3007035DB /* Assets.xcassets */,
 				9BB5390228F645D3007035DB /* SwipeableCards.entitlements */,
 				9BB538FB28F645CF007035DB /* SwipeableCards.xcdatamodeld */,
 				9BB5390328F645D3007035DB /* Preview Content */,
+				9BB5390B28F64643007035DB /* CardView.swift */,
+				9BB5390D28F646AA007035DB /* User.swift */,
+				9BB5390F28F6540D007035DB /* ContentView.swift */,
 			);
 			path = SwipeableCards;
 			sourceTree = "<group>";
@@ -145,9 +148,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BB5390C28F64643007035DB /* CardView.swift in Sources */,
+				9BB5391028F6540D007035DB /* ContentView.swift in Sources */,
 				9BB538F828F645CF007035DB /* SwipeableCardsApp.swift in Sources */,
-				9BB538FA28F645CF007035DB /* Persistence.swift in Sources */,
-				9BB538FF28F645CF007035DB /* ContentView.swift in Sources */,
+				9BB5390E28F646AA007035DB /* User.swift in Sources */,
 				9BB538FD28F645CF007035DB /* SwipeableCards.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
